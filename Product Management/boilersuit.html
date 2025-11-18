@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boiler Suits - Safpro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">SAFPRO INDIA</div>
+            <ul>
+                <li><a href="index.html">Back to Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Boiler Suit Types Section -->
+    <section class="helmet-section">
+        <div class="container">
+            <h2 class="section-title">Boiler Suits</h2>
+            <div class="helmet-grid">
+                <div class="helmet-card">
+                    <div class="image-scroll-container">
+                        <img src="items/orange_suit.jpeg" alt="Orange Boiler Suit 1" class="helmet-image" onclick="openOrderForm('Orange Boiler Suit')">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="helmet-caption">Orange Boiler Suit</h3>
+                        <p class="product-price">₹850</p>
+                        <p class="product-desc">High-visibility orange coverall for industrial work environments</p>
+                    </div>
+                </div>
+
+                <div class="helmet-card">
+                    <div class="image-scroll-container">
+                        <img src="items/blue_suit.jpeg" alt="Blue Boiler Suit 2" class="helmet-image" onclick="openOrderForm('Blue Boiler Suit')">
+                    </div>
+                    <div class="product-details">
+                        <h3 class="helmet-caption">Blue Boiler Suit</h3>
+                        <p class="product-price">₹850</p>
+                        <p class="product-desc">Durable blue coverall with multiple pockets for tool storage</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Form Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeOrderForm()">&times;</span>
+            <h2>Order Form</h2>
+            <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+                <input type="hidden" id="productName" name="productName">
+                
+                <div class="form-group">
+                    <label for="orderName">Name *</label>
+                    <input type="text" id="orderName" name="name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderEmail">Email *</label>
+                    <input type="email" id="orderEmail" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderWhatsapp">WhatsApp Number *</label>
+                    <input type="text" id="orderWhatsapp" name="whatsapp" pattern="[0-9]+" title="Please enter only numbers" required>
+                    <span class="error-message" id="orderWhatsappError"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="orderQuantity">Quantity *</label>
+                    <input type="number" id="orderQuantity" name="quantity" min="1" required>
+                </div>
+
+                <button type="submit" class="submit-button">Order Item</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Safpro - Safety Product Management. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // WhatsApp validation
+        document.getElementById('orderWhatsapp').addEventListener('input', function(e) {
+            const errorSpan = document.getElementById('orderWhatsappError');
+            const value = e.target.value;
+            
+            if (value && !/^\d+$/.test(value)) {
+                errorSpan.textContent = 'Please enter only numbers';
+                errorSpan.style.display = 'block';
+                e.target.setCustomValidity('Please enter only numbers');
+            } else {
+                errorSpan.textContent = '';
+                errorSpan.style.display = 'none';
+                e.target.setCustomValidity('');
+            }
+        });
+
+        function openOrderForm(productName) {
+            document.getElementById('orderModal').style.display = 'flex';
+            document.getElementById('productName').value = productName;
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeOrderForm() {
+            document.getElementById('orderModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            document.getElementById('orderForm').reset();
+        }
+
+        function handleOrderSubmit(event) {
+            event.preventDefault();
+            const productName = document.getElementById('productName').value;
+            alert('Thank you! Your order for ' + productName + ' has been received. We will contact you soon.');
+            closeOrderForm();
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                closeOrderForm();
+            }
+        }
+    </script>
+</body>
+</html>
