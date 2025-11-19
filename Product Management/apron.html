@@ -297,11 +297,79 @@
 
         function handleOrderSubmit(event) {
             event.preventDefault();
+            
             const productName = document.getElementById('productName').value;
-            alert('Thank you! Your order for ' + productName + ' has been received. We will contact you soon.');
-            closeOrderForm();
+            
+            // Define prices for each product
+            const prices = {
+                'Nape Fitting Helmet': '₹250',
+                'Ratchet Fitting Helmet': '₹300',
+                'Orange Boiler Suit': '₹850',
+                'Blue Boiler Suit': '₹850',
+                'Safety Jacket - For Labours': '₹450',
+                'Safety Jacket - For Staff': '₹550',
+                'Cotton Handglove': '₹50',
+                'Leather Handgloves': '₹180',
+                'Non-Woven Head Cap': '₹10',
+                '3 Ply Nose Mask': '₹5',
+                'Apron Leather': '₹400',
+                'Tiger Lorex': '₹950',
+                'Tiger Leopard': '₹980',
+                'Malgre E-one': '₹850',
+                'Rockland': '₹1100',
+                'V4 Safe': '₹920',
+                'Adzon': '₹890',
+                'Safetag': '₹950',
+                'Malgre Collarboot': '₹1050',
+                'Pitbul': '₹1150',
+                'Fire Son': '₹1200',
+                'Simple Gumboot': '₹350',
+                'Gumboot Steeltoe': '₹550',
+                'Malgre Decor': '₹900',
+                'Fuel Armer': '₹1080',
+                'Fuel Flute': '₹1050',
+                'Safari Pro': '₹1100',
+                'VII Safe': '₹950',
+                'Anchor': '₹980',
+                'Karam': '₹1050',
+                'Regar': '₹920',
+                'Rider Leopard': '₹1000',
+                'Rider Lorex': '₹1020',
+                'Octopus Leopard': '₹1120',
+                'Rio Tand': '₹890'
+            };
+            
+            const formData = {
+                product_name: productName,
+                product_price: prices[productName] || 'Price not available',
+                customer_name: document.getElementById('orderName').value,
+                customer_email: document.getElementById('orderEmail').value,
+                customer_address: document.getElementById('orderAddress').value,
+                country_code: document.getElementById('countryCode').value,
+                whatsapp_number: document.getElementById('orderWhatsapp').value,
+                quantity: document.getElementById('orderQuantity').value
+            };
+            
+            emailjs.send('service_ztpxumn', 'template_ed6gq7j', formData)
+                .then(function(response) {
+                    closeOrderForm();
+                    showSuccessModal('Thank you for your order! We have received your order for ' + productName + '. Our team will contact you shortly to confirm the details.');
+                }, function(error) {
+                    alert('Failed to place order. Please try again.');
+                    console.error('Error:', error);
+                });
         }
 
+        function showSuccessModal(message) {
+            document.getElementById('successMessage').textContent = message;
+            document.getElementById('successModal').style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeSuccessModal() {
+            document.getElementById('successModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
         // Close modal when clicking outside
         window.onclick = function(event) {
             const modal = document.getElementById('orderModal');
@@ -310,5 +378,26 @@
             }
         }
     </script>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+    (function(){
+        emailjs.init("A9OAFr_THSguk7PDl"); // Replace with your public key
+    })();
+    </script>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="success-modal">
+        <div class="success-modal-content">
+            <div class="success-checkmark">
+                <svg viewBox="0 0 52 52">
+                    <polyline points="14 27 22 35 38 19"/>
+                </svg>
+            </div>
+            <h2 class="success-title">Order Placed!</h2>
+            <p class="success-message" id="successMessage"></p>
+            <button class="success-close-btn" onclick="closeSuccessModal()">OK</button>
+        </div>
+    </div>
 </body>
 </html>
