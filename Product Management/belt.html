@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Non-Woven PPE - Safpro</title>
+    <title>Safety Belt - Safpro</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,30 +17,19 @@
         </div>
     </nav>
 
-    <!-- Non-Woven PPE Types Section -->
+    <!-- Safety Belt Section -->
     <section class="helmet-section">
         <div class="container">
-            <h2 class="section-title">Non-Woven PPE</h2>
-            <div class="helmet-grid">
+            <h2 class="section-title">Safety Belt</h2>
+            <div class="helmet-grid single-item">
                 <div class="helmet-card">
                     <div class="image-scroll-container">
-                        <img src="items/non-woven-headcap.jpeg" alt="Non-Woven Head Cap 2" class="helmet-image" onclick="openOrderForm('Non-Woven Head Cap')">
+                        <img src="items/malge_belt1.jpg" alt="Safety Belt 1" class="helmet-image" onclick="openOrderForm('Malgre Belt')">
                     </div>
                     <div class="product-details">
-                        <h3 class="helmet-caption">Non-Woven Head Cap</h3>
-                        <p class="product-price">₹0.85</p>
-                        <p class="product-desc">Disposable head cap for hygiene and contamination control</p>
-                    </div>
-                </div>
-
-                <div class="helmet-card">
-                    <div class="image-scroll-container">
-                        <img src="items/nose-mask.jpeg" alt="3 Ply Nose Mask 2" class="helmet-image" onclick="openOrderForm('3 Ply Nose Mask')">
-                    </div>
-                    <div class="product-details">
-                        <h3 class="helmet-caption">3 Ply Nose Mask</h3>
-                        <p class="product-price">₹1.5</p>
-                        <p class="product-desc">Three-layer disposable face mask for respiratory protection</p>
+                        <h3 class="helmet-caption">Malgre Safety Belt</h3>
+                        <p class="product-price">₹650</p>
+                        <p class="product-desc">Full-body safety harness used for fall protection in industries like construction and maintenance</p>
                     </div>
                 </div>
             </div>
@@ -67,12 +56,12 @@
 
                 <div class="form-group">
                     <label for="orderWhatsapp">WhatsApp Number *</label>
-                    <div class="phone-input-group"> 
+                    <div class="phone-input-group">
                         <input type="text" id="orderWhatsapp" 
                         pattern="^(\+91|91)?[6-9][0-9]{9}$" 
                         maxlength="13"
                         placeholder="Enter WhatsApp number"
-                        required> 
+                        required>
                     </div>
                     <span class="error-message" id="orderWhatsappError"></span>
                 </div>
@@ -117,6 +106,7 @@
                 e.target.setCustomValidity('');
             }
         });
+
 
         function openOrderForm(productName) {
             document.getElementById('orderModal').style.display = 'flex';
