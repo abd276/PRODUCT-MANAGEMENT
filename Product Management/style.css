@@ -842,3 +842,34 @@ footer {
     margin-bottom: 2.5rem;
     font-weight: 500;
 }
+
+.seo-content-section {
+    padding: 4rem 0;
+    background: #fff;
+}
+
+.seo-content {
+    max-width: 900px;
+    margin: 0 auto;
+    color: #2d3436;
+    line-height: 1.8;
+}
+
+.seo-content h3 {
+    color: #d63031;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.seo-content ul {
+    margin-left: 2rem;
+    margin-bottom: 1.5rem;
+}
+
+.seo-content li {
+    margin-bottom: 0.8rem;
+}
+
+.seo-content strong {
+    color: #d63031;
+}
