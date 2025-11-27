@@ -4,6 +4,64 @@
     box-sizing: border-box;
 }
 
+/* Tablets */
+@media (min-width: 768px) {
+    nav .logo {
+        font-size: 2rem;
+    }
+
+    .products-grid,
+    .helmet-grid,
+    .shoes-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .ppe-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .bottom-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large Devices / Desktop */
+@media (min-width: 1024px) {
+    .products-grid,
+    .helmet-grid,
+    .shoes-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        background: #fff;
+        padding: 1rem 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #2d3436;
@@ -25,13 +83,14 @@ body {
 
 /* Navigation */
 nav {
-    background: linear-gradient(135deg, #d63031 0%, #e17055 100%);
+    background: #ffffff;
     padding: 1rem 0;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #d63031;
 }
 
 nav .container {
@@ -46,7 +105,7 @@ nav .container {
 nav .logo {
     font-size: 1.8rem;
     font-weight: bold;
-    color: #fff;
+    color: #d63031;
     letter-spacing: 1px;
 }
 
@@ -57,15 +116,15 @@ nav ul {
 }
 
 nav a {
-    color: #fff;
+    color: #d63031;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
     transition: color 0.3s ease;
     cursor: pointer;
 }
 
 nav a:hover {
-    color: #fdcb6e;
+    color: #e17055;
 }
 
 /* Hero Section */
